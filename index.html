@@ -5,7 +5,11 @@
   <title>Wedding Invitation | Sathyaraj ❤️ Chithra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Pairing -->
+  <!-- Font Pairing:
+       Prospect-style (elegant serif) - Cinzel
+       Romantic Script - Great Vibes
+       Whimsical - Caveat
+  -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Great+Vibes&family=Caveat&display=swap" rel="stylesheet" />
 
   <style>
@@ -22,85 +26,11 @@
       flex-direction: column;
     }
 
-    /* Floating Diyas */
-    .diya {
-      position: absolute;
-      bottom: -60px;
-      width: 40px;
-      height: 40px;
-      background: url('https://i.imgur.com/GAFD9Zn.png') no-repeat center/contain;
-      animation: floatDiya 8s linear infinite;
-    }
-
-    @keyframes floatDiya {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-800px) translateX(80px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Petals falling */
-    .petal {
-      position: absolute;
-      top: -20px;
-      width: 20px;
-      height: 20px;
-      background: url('https://i.imgur.com/l9u3D0p.png') no-repeat center/contain;
-      animation: fallPetal 10s linear infinite;
-    }
-
-    @keyframes fallPetal {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Mandala Corners */
-    .mandala {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: url('https://i.imgur.com/kdkEwMY.png') no-repeat center/contain;
-      opacity: 0.15;
-      animation: spinMandala 30s linear infinite;
-    }
-
-    .mandala.top-left { top: 0; left: 0; }
-    .mandala.top-right { top: 0; right: 0; }
-    .mandala.bottom-left { bottom: 0; left: 0; }
-    .mandala.bottom-right { bottom: 0; right: 0; }
-
-    @keyframes spinMandala {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     .scene {
       width: 360px;
       height: 640px;
       perspective: 1200px;
       position: relative;
-      animation: entryFlip 2s ease-out;
-    }
-
-    @keyframes entryFlip {
-      0% {
-        transform: rotateX(90deg) scale(0.5);
-        opacity: 0;
-      }
-      100% {
-        transform: rotateX(0) scale(1);
-        opacity: 1;
-      }
     }
 
     .card {
@@ -131,13 +61,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      animation: shimmerBorder 3s linear infinite;
-    }
-
-    @keyframes shimmerBorder {
-      0% { box-shadow: 0 0 5px gold; }
-      50% { box-shadow: 0 0 20px gold; }
-      100% { box-shadow: 0 0 5px gold; }
     }
 
     .front {
@@ -151,6 +74,7 @@
 
     h1 {
       font-size: 1.8rem;
+      font-family: 'Cinzel', serif;
       margin: 0.5rem 0;
       animation: glow 1.5s ease-in-out infinite alternate;
     }
@@ -178,6 +102,7 @@
     p {
       margin: 0.5rem 0;
       font-size: 1.1rem;
+      font-family: 'Cinzel', serif;
     }
 
     .qr {
@@ -191,6 +116,12 @@
     .qr img {
       width: 150px;
       height: 150px;
+    }
+
+    .qr p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #ffe;
     }
 
     @keyframes glow {
@@ -231,20 +162,16 @@
   </style>
 </head>
 <body>
-  <!-- Decorative Elements -->
-  <div class="mandala top-left"></div>
-  <div class="mandala top-right"></div>
-  <div class="mandala bottom-left"></div>
-  <div class="mandala bottom-right"></div>
-
   <div class="scene">
     <div class="card" id="inviteCard">
+      <!-- Front Side -->
       <div class="card-face front">
         <h1>Welcome To Our Wedding</h1>
         <h2 class="sparkle-text" id="sparkleName">Sathyaraj ❤️ Chithra</h2>
         <p>👇 Tap to view details</p>
       </div>
 
+      <!-- Back Side -->
       <div class="card-face back">
         <h2 class="whimsical-text">Save The Date</h2>
         <p>📅 28th August 2025</p>
@@ -260,6 +187,11 @@
       </div>
     </div>
   </div>
+
+  <!-- JioSaavn Embed Player -->
+  <iframe src="https://www.jiosaavn.com/embed/artist/satya-yamini-songs/osf6M3osqEg_"
+          width="100%" height="60" frameborder="0" allowfullscreen allow="autoplay">
+  </iframe>
 
   <script>
     const card = document.getElementById("inviteCard");
@@ -282,6 +214,7 @@
       const rect = element.getBoundingClientRect();
       const width = rect.width;
       const height = rect.height;
+
       let count = 0;
       const interval = setInterval(() => {
         const offsetX = Math.random() * width;
@@ -290,24 +223,6 @@
         count++;
         if (count > 50) clearInterval(interval);
       }, 50);
-    }
-
-    // Floating Diyas
-    for (let i = 0; i < 5; i++) {
-      const diya = document.createElement("div");
-      diya.className = "diya";
-      diya.style.left = `${Math.random() * 100}%`;
-      diya.style.animationDelay = `${i * 2}s`;
-      document.body.appendChild(diya);
-    }
-
-    // Falling Petals
-    for (let i = 0; i < 10; i++) {
-      const petal = document.createElement("div");
-      petal.className = "petal";
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.animationDelay = `${i * 1.5}s`;
-      document.body.appendChild(petal);
     }
 
     window.addEventListener("load", () => {
